@@ -37,7 +37,7 @@ export const CardFooter = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className={`${baseClass}__change`}>
             <span className={`${baseClass}__change--positive`}>{children}</span>{" "}
-            From last month
+            ماه گذشته
         </div>
     );
 };

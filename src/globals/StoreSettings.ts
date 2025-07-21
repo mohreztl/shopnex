@@ -16,12 +16,12 @@ const StoreSettings: GlobalConfig = {
         {
             name: "name",
             type: "text",
-            defaultValue: "ShopLoad",
+            defaultValue: "نوین پلکسی",
         },
         {
             name: "currency",
             type: "select",
-            defaultValue: "USD",
+            defaultValue: "IRR",
             options: currency.codes().map((code) => ({
                 label: `${currency.code(code)?.currency} (${currency.code(code)?.code})`,
                 value: code,

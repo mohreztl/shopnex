@@ -1,6 +1,7 @@
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-import { useAuth } from "../_providers/auth";
 import Input from "./input";
 import { SubmitButton } from "./submit-button";
 
@@ -14,18 +15,56 @@ type Props = {
 };
 
 const Login = ({ setCurrentView }: Props) => {
-    const { login } = useAuth();
+    const [otpSent, setOtpSent] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [message, setMessage] = useState<string | null>(null);
     const router = useRouter();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSendOtp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setError(null);
+        setMessage(null);
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries()) as {
-            email: string;
-            password: string;
-        };
-        await login(data);
-        router.refresh();
+        const phone = formData.get("phone") as string;
+
+        try {
+            const res = await fetch("/api/send-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phone }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Failed to send OTP");
+            }
+
+            setMessage(data.message);
+            setOtpSent(true);
+        } catch (err: any) {
+            setError(err.message);
+        }
+    };
+
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setError(null);
+        const formData = new FormData(e.currentTarget);
+        const phone = formData.get("phone") as string;
+        const otp = formData.get("otp") as string;
+
+        const result = await signIn("credentials", {
+            redirect: false,
+            phone,
+            otp,
+        });
+
+        if (result?.error) {
+            setError(result.error);
+        } else {
+            router.push("/"); // Redirect to home on successful login
+        }
     };
 
     return (
@@ -33,36 +72,56 @@ const Login = ({ setCurrentView }: Props) => {
             className="max-w-sm w-full flex flex-col items-center"
             data-testid="login-page"
         >
-            <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
+            <h1 className="text-large-semi uppercase mb-6">
+                {otpSent ? "Enter Verification Code" : "Welcome Back"}
+            </h1>
             <p className="text-center text-base-regular text-ui-fg-base mb-8">
-                Sign in to access an enhanced shopping experience.
+                {otpSent
+                    ? "A 6-digit code has been sent to your phone."
+                    : "Sign in to access an enhanced shopping experience."}
             </p>
-            <form className="w-full" onSubmit={handleSubmit}>
+            <form
+                className="w-full"
+                onSubmit={otpSent ? handleLogin : handleSendOtp}
+            >
                 <div className="flex flex-col w-full gap-y-2">
                     <Input
-                        autoComplete="email"
-                        data-testid="email-input"
-                        label="Email"
-                        name="email"
+                        autoComplete="tel"
+                        data-testid="phone-input"
+                        label="Phone Number"
+                        name="phone"
                         required
-                        title="Enter a valid email address."
-                        type="email"
+                        title="Enter a valid phone number."
+                        type="tel"
+                        readOnly={otpSent}
                     />
-                    <Input
-                        autoComplete="current-password"
-                        data-testid="password-input"
-                        label="Password"
-                        name="password"
-                        required
-                        type="password"
-                    />
+                    {otpSent && (
+                        <Input
+                            autoComplete="one-time-code"
+                            data-testid="otp-input"
+                            label="OTP"
+                            name="otp"
+                            required
+                            type="text"
+                        />
+                    )}
                 </div>
-                {/* <ErrorMessage error={message} data-testid="login-error-message" /> */}
+                {error && (
+                    <div
+                        className="text-red-500 text-sm mt-2"
+                        data-testid="login-error-message"
+                    >
+                        {error}
+                    </div>
+                )}
+                {message && (
+                    <div className="text-green-500 text-sm mt-2">{message}</div>
+                )}
                 <SubmitButton
                     className="w-full mt-6"
                     data-testid="sign-in-button"
                 >
-                    Sign in
+                    {otpSent ? "Sign In" : "Send Code"}
                 </SubmitButton>
             </form>
             <span className="text-center text-ui-fg-base text-small-regular mt-6">

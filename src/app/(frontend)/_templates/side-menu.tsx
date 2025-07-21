@@ -11,7 +11,7 @@ import { Fragment } from "react";
 const SideMenuItems = {
     Home: "/",
     Store: "/store",
-    //   Search: '/search',
+    Search: "/search",
     Account: "/account",
     Cart: "/cart",
 };

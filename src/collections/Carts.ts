@@ -109,4 +109,8 @@ export const Carts: CollectionConfig = {
             },
         ],
     },
+    labels: {
+        plural: "کارت ها",
+        singular: "کارت ها",
+    },
 };

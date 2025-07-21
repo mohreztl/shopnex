@@ -1,5 +1,15 @@
+import type { Post } from "@/payload-types";
+import type { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import type { Plugin } from "payload";
 
+import { getServerSideURL } from "@/utils/getURL";
+
+// import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+// import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+// import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
+// import { redirectsPlugin } from '@payloadcms/plugin-redirects'
+import { seoPlugin } from "@payloadcms/plugin-seo";
+// import { searchPlugin } from '@payloadcms/plugin-search'
 import { cjPlugin } from "@shopnex/cj-plugin";
 import { importExportPlugin } from "@shopnex/import-export-plugin";
 import { storePlugin } from "@shopnex/store-plugin";
@@ -7,8 +17,23 @@ import { stripePlugin } from "@shopnex/stripe-plugin";
 
 import { paymentCanceled } from "./webhooks/payment-canceled";
 import { paymentSucceeded } from "./webhooks/payment-succeeded";
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+const generateTitle: GenerateTitle<Post> = ({ doc }) => {
+    return doc?.title
+        ? `${doc.title} | Payload Website Template`
+        : "Payload Website Template";
+};
 
+const generateURL: GenerateURL<Post> = ({ doc }) => {
+    const url = getServerSideURL();
+
+    return doc?.slug ? `${url}/${doc.slug}` : url;
+};
 export const plugins: Plugin[] = [
+    seoPlugin({
+        generateTitle,
+        generateURL,
+    }),
     stripePlugin({
         isTestKey: Boolean(process.env.NEXT_PUBLIC_STRIPE_IS_TEST_KEY),
         logs: true,
@@ -29,7 +54,7 @@ export const plugins: Plugin[] = [
     }),
     storePlugin({}),
     importExportPlugin({
-        collections: ["products", "orders"],
+        collections: ["products", "orders,posts"],
         disableJobsQueue: true,
         importCollections: [
             {
@@ -37,6 +62,9 @@ export const plugins: Plugin[] = [
             },
             {
                 collectionSlug: "orders",
+            },
+            {
+                collectionSlug: "posts",
             },
         ],
     }),

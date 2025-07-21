@@ -4,6 +4,13 @@ module.exports = {
     content: ["./node_modules/@medusajs/ui/dist/**/*.{js,jsx,ts,tsx}"],
     theme: {
         extend: {
+              colors: {
+        primary: 'rgb(var(--primary))',
+        secondary: 'rgb(var(--secondary))',
+        accent: 'rgb(var(--accent))',
+        background: 'rgb(var(--background))',
+        text: 'rgb(var(--text))',
+      },
             transitionProperty: {
                 width: "width margin",
                 height: "height",

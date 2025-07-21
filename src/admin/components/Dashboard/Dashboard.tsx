@@ -15,11 +15,11 @@ import SalesChart from "./SalesChart";
 const baseClass = "dashboard";
 
 // Helper: Format currency
-const formatCurrency = (amount: number, currency = "USD") =>
-    new Intl.NumberFormat("en-US", {
+const formatCurrency = (amount: number, currency = "IRR") =>
+    new Intl.NumberFormat("fa-IR", {
         currency,
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2,
+        maximumFractionDigits: 0,
+        minimumFractionDigits: 0,
         style: "currency",
     }).format(amount);
 
@@ -122,7 +122,7 @@ const Dashboard = async (props: AdminViewServerProps) => {
 
     return (
         <Gutter>
-            <h1 className={`${baseClass}__label`}>ShopNex</h1>
+            <h1 className={`${baseClass}__label`}>نوین پلکسی</h1>
             <ul
                 className={`${baseClass}__card-list`}
                 style={{
@@ -134,7 +134,7 @@ const Dashboard = async (props: AdminViewServerProps) => {
             >
                 <li>
                     <Card>
-                        <CardHeader>Total Profit</CardHeader>
+                        <CardHeader>مجموع درآمد</CardHeader>
                         <CardBody>
                             {formatCurrency(currentMetrics.totalProfit)}
                         </CardBody>
@@ -148,7 +148,7 @@ const Dashboard = async (props: AdminViewServerProps) => {
                 </li>
                 <li>
                     <Card>
-                        <CardHeader>Avg. Order Value</CardHeader>
+                        <CardHeader>میانگین قیمت سفارشات</CardHeader>
                         <CardBody>
                             {formatCurrency(currentMetrics.avgOrderValue)}
                         </CardBody>
@@ -162,7 +162,7 @@ const Dashboard = async (props: AdminViewServerProps) => {
                 </li>
                 <li>
                     <Card>
-                        <CardHeader>Total Orders</CardHeader>
+                        <CardHeader>مجموع سفارشات</CardHeader>
                         <CardBody>
                             {currentMetrics.totalOrders.toString()}
                         </CardBody>
@@ -176,7 +176,7 @@ const Dashboard = async (props: AdminViewServerProps) => {
                 </li>
                 <li>
                     <Card>
-                        <CardHeader>Lifetime Value</CardHeader>
+                        <CardHeader>درامد کل</CardHeader>
                         <CardBody>
                             {formatCurrency(currentMetrics.lifetimeValue)}
                         </CardBody>

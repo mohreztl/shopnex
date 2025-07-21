@@ -56,7 +56,7 @@ const SalesChart: React.FC<Props> = ({ data, strokeWidth = 2 }) => {
             style={{ marginTop: "2rem" }}
         >
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                Sales Overview
+                نمایش فروش
             </h3>
             <ResponsiveContainer height={400} width="100%">
                 <LineChart

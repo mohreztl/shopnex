@@ -29,6 +29,7 @@
         "@medusajs/ui-preset": "^2.5.1",
         "@payloadcms/db-sqlite": "3.31.0",
         "@payloadcms/next": "3.31.0",
+        "@payloadcms/plugin-seo": "3.31.0",
         "@payloadcms/richtext-lexical": "3.31.0",
         "@payloadcms/translations": "3.31.0",
         "@payloadcms/ui": "3.31.0",
@@ -45,15 +46,19 @@
         "cross-env": "^7.0.3",
         "currency-codes": "^2.2.0",
         "decimal.js": "^10.5.0",
+        "framer-motion": "^12.15.0",
         "graphql": "^16.8.1",
         "jsdom": "^26.0.0",
         "lodash": "^4.17.21",
         "lucide-react": "^0.484.0",
         "next": "15.2.4",
+        "next-auth": "5.0.0-beta.29",
         "payload": "3.31.0",
+        "payload-authjs": "^0.8.2",
         "rate-limiter-flexible": "^6.1.0",
         "react": "19.0.0",
         "react-dom": "19.0.0",
+        "react-icons": "^5.5.0",
         "react-use-cart": "^1.14.0",
         "recharts": "^2.15.1",
         "sharp": "0.32.6",
@@ -87,5 +92,6 @@
         "onlyBuiltDependencies": [
             "sharp"
         ]
-    }
+    },
+    "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
 }

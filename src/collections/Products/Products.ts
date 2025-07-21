@@ -3,6 +3,7 @@ import type { CollectionConfig } from "payload";
 import { admins, anyone } from "@/access/roles";
 import { description } from "@/fields/description";
 import { handleField } from "@/fields/slug";
+// import { slugField } from "@/fields/slugs";
 
 import { groups } from "../groups";
 import { deleteMedia } from "./hooks/delete-media";
@@ -21,15 +22,15 @@ export const Products: CollectionConfig = {
         useAsTitle: "title",
     },
     fields: [
-        {
-            name: "image",
-            type: "ui",
-            admin: {
-                components: {
-                    Cell: "@/collections/Products/fields/ImageCell",
-                },
-            },
-        },
+        //  {
+        //      name: "image",
+        //      type: "ui",
+        //    admin: {
+        //      components: {
+        //           Cell: "@/collections/Products/fields/ImageCell",
+        //     },
+        //    },
+        // },
         {
             name: "pid",
             type: "text",
@@ -105,6 +106,7 @@ export const Products: CollectionConfig = {
             relationTo: "collections",
         },
         handleField(),
+        // ...slugField(),
         {
             type: "collapsible",
             admin: {
@@ -245,5 +247,9 @@ export const Products: CollectionConfig = {
     ],
     hooks: {
         afterDelete: [deleteMedia],
+    },
+    labels: {
+        plural: "محصولات",
+        singular: "محصولات",
     },
 };

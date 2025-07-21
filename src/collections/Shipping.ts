@@ -29,6 +29,10 @@ const ManualProvider: Block = {
             required: true,
         },
     ],
+    labels: {
+        plural: "حمل و نقل",
+        singular: "حمل و نقل",
+    },
 };
 
 export const Shipping: CollectionConfig = {
@@ -70,7 +74,7 @@ export const Shipping: CollectionConfig = {
         },
     ],
     labels: {
-        plural: "Shipping",
-        singular: "Shipping",
+        plural: "حمل و نقل",
+        singular: "حمل و نقل",
     },
 };

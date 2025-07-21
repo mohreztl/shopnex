@@ -1,6 +1,3 @@
-import { ExportListMenuItem as ExportListMenuItem_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
-import { ImportListMenuItem as ImportListMenuItem_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
-import { ExportSaveButton as ExportSaveButton_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from "@payloadcms/richtext-lexical/rsc";
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from "@payloadcms/richtext-lexical/rsc";
 import { HorizontalRuleFeatureClient as HorizontalRuleFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from "@payloadcms/richtext-lexical/client";
@@ -24,9 +21,18 @@ import { LinkFeatureClient as LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { RelationshipFeatureClient as RelationshipFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from "@payloadcms/richtext-lexical/client";
 import { BlockquoteFeatureClient as BlockquoteFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from "@payloadcms/richtext-lexical/client";
 import { UploadFeatureClient as UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from "@payloadcms/richtext-lexical/client";
-import { default as default_e49979b57f52dbb3fe02cec65aa4998b } from "@/collections/Products/fields/ImageCell";
 import { default as default_f0f7b12584c89e13c6a87d8efa94a229 } from "@/collections/Products/fields/BuildVariantsButton";
+import { ExportListMenuItem as ExportListMenuItem_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
+import { ImportListMenuItem as ImportListMenuItem_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
+import { ExportSaveButton as ExportSaveButton_2cddc2e1d3f965d7263141af56b26a90 } from "@shopnex/import-export-plugin/rsc";
 import { ApiToken as ApiToken_d63109af7e7e829a8cdb207ca8c3245a } from "@shopnex/stripe-plugin/client";
+import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from "@payloadcms/richtext-lexical/client";
+import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from "@payloadcms/plugin-seo/client";
+import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from "@payloadcms/plugin-seo/client";
+import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from "@payloadcms/plugin-seo/client";
+import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from "@payloadcms/plugin-seo/client";
+import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from "@payloadcms/plugin-seo/client";
+import { SlugComponent as SlugComponent_92cc057d0a2abb4f6cf0307edf59f986 } from "@/fields/slugs/SlugComponent";
 import { ApiToken as ApiToken_4db7f57ea512297f27e20ca12ad3336a } from "@shopnex/utils/rsc";
 import { PluginEditView as PluginEditView_57ab7ef8acde5e865fd68d3a08a07070 } from "@shopnex/store-plugin/client";
 import { PluginListView as PluginListView_57ab7ef8acde5e865fd68d3a08a07070 } from "@shopnex/store-plugin/client";
@@ -40,12 +46,6 @@ import { ImportExportProvider as ImportExportProvider_2cddc2e1d3f965d7263141af56
 import { default as default_1ab113f7c5575fdebcd59a27756787ec } from "@/admin/components/Dashboard/Dashboard";
 
 export const importMap = {
-    "@shopnex/import-export-plugin/rsc#ExportListMenuItem":
-        ExportListMenuItem_2cddc2e1d3f965d7263141af56b26a90,
-    "@shopnex/import-export-plugin/rsc#ImportListMenuItem":
-        ImportListMenuItem_2cddc2e1d3f965d7263141af56b26a90,
-    "@shopnex/import-export-plugin/rsc#ExportSaveButton":
-        ExportSaveButton_2cddc2e1d3f965d7263141af56b26a90,
     "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell":
         RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
     "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField":
@@ -92,12 +92,30 @@ export const importMap = {
         BlockquoteFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
     "@payloadcms/richtext-lexical/client#UploadFeatureClient":
         UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
-    "@/collections/Products/fields/ImageCell#default":
-        default_e49979b57f52dbb3fe02cec65aa4998b,
     "@/collections/Products/fields/BuildVariantsButton#default":
         default_f0f7b12584c89e13c6a87d8efa94a229,
+    "@shopnex/import-export-plugin/rsc#ExportListMenuItem":
+        ExportListMenuItem_2cddc2e1d3f965d7263141af56b26a90,
+    "@shopnex/import-export-plugin/rsc#ImportListMenuItem":
+        ImportListMenuItem_2cddc2e1d3f965d7263141af56b26a90,
+    "@shopnex/import-export-plugin/rsc#ExportSaveButton":
+        ExportSaveButton_2cddc2e1d3f965d7263141af56b26a90,
     "@shopnex/stripe-plugin/client#ApiToken":
         ApiToken_d63109af7e7e829a8cdb207ca8c3245a,
+    "@payloadcms/richtext-lexical/client#BlocksFeatureClient":
+        BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+    "@payloadcms/plugin-seo/client#OverviewComponent":
+        OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+    "@payloadcms/plugin-seo/client#MetaTitleComponent":
+        MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
+    "@payloadcms/plugin-seo/client#MetaImageComponent":
+        MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
+    "@payloadcms/plugin-seo/client#MetaDescriptionComponent":
+        MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
+    "@payloadcms/plugin-seo/client#PreviewComponent":
+        PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+    "@/fields/slugs/SlugComponent#SlugComponent":
+        SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
     "@shopnex/utils/rsc#ApiToken": ApiToken_4db7f57ea512297f27e20ca12ad3336a,
     "@shopnex/store-plugin/client#PluginEditView":
         PluginEditView_57ab7ef8acde5e865fd68d3a08a07070,

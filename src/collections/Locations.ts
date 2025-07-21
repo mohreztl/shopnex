@@ -58,4 +58,8 @@ export const Locations: CollectionConfig = {
             label: "Available for Pickup?",
         },
     ],
+    labels: {
+        plural: "مکان ها",
+        singular: "مکان ها",
+    },
 };

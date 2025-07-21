@@ -96,4 +96,8 @@ export const GiftCards: CollectionConfig = {
             label: "Expiration Date",
         },
     ],
+    labels: {
+        plural: "کد تخفیف",
+        singular: "کد تخفیف",
+    },
 };
